@@ -1,0 +1,29 @@
+{
+  "name": "ara-runtime-configuration",
+  "version": "1.0.0",
+  "description": "ARA Runtime Configuration (.ararc)",
+  "main": "index.js",
+  "scripts": {
+    "test": ":"
+  },
+  "keywords": [
+    "ara",
+    "runtime",
+    "configuration",
+    "rc"
+  ],
+  "author": "Joseph Werle",
+  "license": "LGPL-3.0",
+  "dependencies": {
+    "rc": "^1.2.7"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AraBlocks/ara-runtime-configuration.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AraBlocks/ara-runtime-configuration/issues"
+  },
+  "homepage": "https://github.com/AraBlocks/ara-runtime-configuration#readme"
+}
