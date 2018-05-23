@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "ARA Runtime Configuration (.ararc)",
   "main": "index.js",
+  "browser": "browser.js",
   "scripts": {
     "test": ":"
   },
