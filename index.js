@@ -8,10 +8,11 @@ const os = require('os')
 const kRuntimeConfigurationName = 'ara'
 
 const kRuntimeConfigurationDefaults = {
-  data: {
-    root: resolve(os.homedir(), '.ara')
-  }
+  network: {},
+  data: { root: resolve(os.homedir(), '.ara') },
 }
+
+const state = {}
 
 module.exports = ARARuntimeConfiguration
 
@@ -32,6 +33,8 @@ function ARARuntimeConfiguration(conf, name) {
   } else {
     const defaults = kRuntimeConfigurationDefaults
     name = name || kRuntimeConfigurationName
-    return rc(name, extend(true, {}, defaults, conf))
+    conf = rc(name, extend(true, {}, defaults, conf))
+    extend(true, state, conf)
+    return state
   }
 }
