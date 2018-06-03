@@ -1,7 +1,17 @@
 'use strict'
 
+const { resolve } = require('path')
+const extend = require('extend')
 const rc = require('rc')
+const os = require('os')
+
 const kRuntimeConfigurationName = 'ara'
+
+const kRuntimeConfigurationDefaults = {
+  data: {
+    root: resolve(os.homedir(), '.ara')
+  }
+}
 
 module.exports = ARARuntimeConfiguration
 
@@ -20,6 +30,8 @@ function ARARuntimeConfiguration(conf, name) {
   } else if (null != name && 'string' != typeof name) {
     throw new TypeError("ARARuntimeConfiguration: Expecting name to be a string.")
   } else {
-    return rc(name || kRuntimeConfigurationName, conf)
+    const defaults = kRuntimeConfigurationDefaults
+    name = name || kRuntimeConfigurationName
+    return rc(name, extend(true, {}, defaults, conf))
   }
 }
