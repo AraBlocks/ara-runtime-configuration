@@ -1,6 +1,6 @@
 {
   "name": "ara-runtime-configuration",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "ARA Runtime Configuration (.ararc)",
   "main": "index.js",
   "browser": "browser.js",
