@@ -31,9 +31,81 @@ optionally specifying defaults.
 
 * `defaults` - Optional configuration defaults.
 
+## Command Line
+
+### `araconf(1)`
+
+`araconf` is a tool for quickly reading values in the closest
+configuration file. It uses
+[json-select](https://github.com/dominictarr/json-select) to support
+[JSONPath](http://goessner.net/articles/JsonPath/) queries.
+
+
+#### Usage
+
+`araconf` can be used directly from command line. It accepts a single
+optional [JSONPath]() query and emits valid JSON to stdout.
+
+```
+usage: araconf [-hV] [options] [query]
+
+Options:
+  -D, --debug    Enable debug output      [boolean]
+  -h, --help     Show help                [boolean]
+  -V, --version  Show version number      [boolean]
+```
+
+#### Examples
+
+Running without a query:
+
+```sh
+$ araconf
+{
+  "network": {
+    "identity": {}
+  },
+  "data": {
+    "root": "/home/werle/.ara"
+  },
+  "web3": {
+    "provider": "http://127.0.0.1:8545"
+  }
+}
+
+```
+
+Targeting the `.data` object of the conf:
+
+```sh
+$ araconf .data
+{
+  "root": "/home/werle/.ara"
+}
+```
+
+Targeting the `.web3.provider` property:
+
+```sh
+$ araconf .web3.provider
+"http://127.0.0.1:8545"
+```
+
+Enable debug output with `--debug`:
+
+```sh
+$ araconf .data.root --debug
+  ara-runtime-configuration config: /home/werle/.ararc +0ms
+  ara-runtime-configuration configs: [ '/home/werle/.ararc' ] +2ms
+"/home/werle/.ara"
+```
+
 ## See Also
 
 * [rc](https://github.com/dominictarr/rc)
+* [JSONPath](http://goessner.net/articles/JsonPath/)
+* [JSONStream](https://www.npmjs.com/package/JSONStream)
+* [json-select](https://github.com/dominictarr/json-select)
 
 ## License
 
