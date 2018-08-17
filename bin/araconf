@@ -1,0 +1,65 @@
+#!/usr/bin/env node
+
+const { error, warn } = require('ara-console')
+const { name } = require('../package.json')
+const program = require('yargs')
+const select = require('json-select')
+const debug = require('debug')(name)
+const rc = require('../')
+
+const { argv } = program
+  .usage('usage: $0 [-hV] [options] [query]')
+  .alias('h', 'help')
+  .alias('V', 'version')
+  .option('D', {
+    type: 'boolean',
+    alias: 'debug',
+    describe: 'Enable debug output',
+  })
+
+if (true === argv.debug) {
+  // eslint-disable-next-line global-require
+  require('debug').enable(name)
+}
+
+const conf = rc()
+const { configs, config } = conf
+
+debug('config:', config)
+debug('configs:', configs)
+
+delete conf.configs
+delete conf.config
+delete conf._
+
+if ('string' === typeof config) {
+}
+
+if (argv._.length) {
+  const stream = select(argv._.join(' '))
+  stream.on('data', ondata)
+  stream.on('end', onend)
+  stream.end(JSON.stringify(conf))
+} else {
+  // just output neatly formatted JSON
+  ondata(conf)
+  onend()
+}
+
+function ondata(data) {
+  process.stdout.write(stringify(data))
+}
+
+function onend() {
+  process.stdout.write('\n')
+}
+
+function stringify(object) {
+  return JSON.stringify(object, null, '  ')
+}
+
+function fatal(err) {
+  debug(err.stack || err)
+  error(err.message || err)
+  process.exit(1)
+}
