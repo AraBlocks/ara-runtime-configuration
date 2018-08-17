@@ -1,3 +1,3 @@
-module.exports = function (conf) {
+module.exports = function rc(conf) {
   return Object.assign({}, conf)
 }
