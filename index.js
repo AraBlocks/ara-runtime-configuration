@@ -1,5 +1,3 @@
-'use strict'
-
 const { resolve } = require('path')
 const extend = require('extend')
 const rc = require('rc')
@@ -26,13 +24,15 @@ module.exports = ARARuntimeConfiguration
  * @see
  */
 function ARARuntimeConfiguration(conf, name) {
-  if (null != conf && 'object' != typeof conf) {
-    throw new TypeError("ARARuntimeConfiguration: Expecting configuration to be an object.")
-  } else if (null != name && 'string' != typeof name) {
-    throw new TypeError("ARARuntimeConfiguration: Expecting name to be a string.")
+  if (undefined !== conf && null !== conf && 'object' !== typeof conf) {
+    throw new TypeError('Expecting configuration to be an object.')
+  } else if (name && 'string' !== typeof name) {
+    throw new TypeError('Expecting name to be a string.')
   } else {
     const defaults = kRuntimeConfigurationDefaults
+    // eslint-disable-next-line no-param-reassign
     name = name || kRuntimeConfigurationName
+    // eslint-disable-next-line no-param-reassign
     conf = rc(name, extend(true, {}, defaults, conf))
     extend(true, state, conf)
     return state
