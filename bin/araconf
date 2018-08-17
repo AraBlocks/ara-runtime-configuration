@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { error, warn } = require('ara-console')
+const { error } = require('ara-console')
 const { name } = require('../package.json')
 const program = require('yargs')
 const select = require('json-select')
@@ -32,18 +32,24 @@ delete conf.configs
 delete conf.config
 delete conf._
 
-if ('string' === typeof config) {
+try {
+  if (argv._.length) {
+    const stream = select(argv._.join(' '))
+    stream.on('error', onfatal)
+    stream.on('data', ondata)
+    stream.on('end', onend)
+    stream.end(JSON.stringify(conf))
+  } else {
+    // just output neatly formatted JSON
+    ondata(conf)
+    onend()
+  }
+} catch (err) {
+  onfatal(err)
 }
 
-if (argv._.length) {
-  const stream = select(argv._.join(' '))
-  stream.on('data', ondata)
-  stream.on('end', onend)
-  stream.end(JSON.stringify(conf))
-} else {
-  // just output neatly formatted JSON
-  ondata(conf)
-  onend()
+function stringify(object) {
+  return JSON.stringify(object, null, '  ')
 }
 
 function ondata(data) {
@@ -54,11 +60,7 @@ function onend() {
   process.stdout.write('\n')
 }
 
-function stringify(object) {
-  return JSON.stringify(object, null, '  ')
-}
-
-function fatal(err) {
+function onfatal(err) {
   debug(err.stack || err)
   error(err.message || err)
   process.exit(1)
