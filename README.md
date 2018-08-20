@@ -1,7 +1,13 @@
-ara-runtime-configuration
+<img src="https://github.com/arablocks/ara-module-template/blob/master/ara.png" width="30" height="30" /> ara-runtime-configuration
 =========================
 
-ARA Runtime Configuration (Reads from the nearest `.ararc` file.)
+[![Build Status](https://travis-ci.com/AraBlocks/ara-runtime-configuration.svg?token=6WjTyCg41y8MBmCzro5x&branch=master)](https://travis-ci.com/AraBlocks/ara-runtime-configuration)
+
+Ara Runtime Configuration (Reads from the nearest `.ararc` file.)
+
+## Status
+
+**Stable**
 
 ## Installation
 
@@ -11,9 +17,9 @@ $ npm install ara-runtime-configuration
 
 ## Usage
 
-To load _Runtime Configuration_ for any ARA related modules, simply
+To load _Runtime Configuration_ for any Ara related modules, simply
 require this module and call the default exported function. You can pass
-an object specifying default values that may not be present in a `.ararc`
+an object specifying default values that may not be present in an `.ararc`
 
 ```js
 const rc = require('ara-runtime-configuration')
@@ -99,6 +105,14 @@ $ araconf .data.root --debug
   ara-runtime-configuration configs: [ '/home/werle/.ararc' ] +2ms
 "/home/werle/.ara"
 ```
+
+## Contributing
+
+- [Commit message format](/.github/COMMIT_FORMAT.md)
+- [Commit message examples](/.github/COMMIT_FORMAT_EXAMPLES.md)
+- [How to contribute](/.github/CONTRIBUTING.md)
+
+Releases follow [Semantic Versioning](https://semver.org/)
 
 ## See Also
 
