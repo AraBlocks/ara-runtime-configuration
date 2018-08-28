@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const { resolve } = require('path')
 const { error } = require('ara-console')
 const { name } = require('../package.json')
 const program = require('yargs')
@@ -11,6 +12,9 @@ const { argv } = program
   .usage('usage: $0 [-hV] [options] [query]')
   .alias('h', 'help')
   .alias('V', 'version')
+  .option('data-root', {
+    describe: 'Output data root directories',
+  })
   .option('D', {
     type: 'boolean',
     alias: 'debug',
@@ -32,8 +36,18 @@ delete conf.configs
 delete conf.config
 delete conf._
 
+delete conf['data-root']
+
 try {
-  if (argv._.length) {
+  if (argv['data-root']) {
+    if (true === argv['data-root']) {
+      process.stdout.write(conf.data.root)
+    } else {
+      process.stdout.write(resolve(conf.data.root, argv['data-root']))
+    }
+
+    process.stdout.write('\n')
+  } else if (argv._.length) {
     const stream = select(argv._.join(' '))
     stream.on('error', onfatal)
     stream.on('data', ondata)
