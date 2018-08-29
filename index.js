@@ -30,10 +30,13 @@ function ARARuntimeConfiguration(conf, name) {
     throw new TypeError('Expecting name to be a string.')
   } else {
     const defaults = kRuntimeConfigurationDefaults
+    // use an empty argv because the 'rc' module uses
+    // 'process.argv' if we don't give it one
+    const argv = {}
     // eslint-disable-next-line no-param-reassign
     name = name || kRuntimeConfigurationName
     // eslint-disable-next-line no-param-reassign
-    conf = rc(name, extend(true, {}, defaults, conf))
+    conf = rc(name, extend(true, {}, defaults, conf), argv)
     extend(true, state, conf)
     return state
   }
