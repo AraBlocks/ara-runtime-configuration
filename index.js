@@ -6,7 +6,12 @@ const os = require('os')
 const kRuntimeConfigurationName = 'ara'
 
 const kRuntimeConfigurationDefaults = {
-  network: {},
+  network: { 
+    identity: { 
+      root: resolve(os.homedir(), '.ara', 'identities'),
+      keyring: resolve(os.homedir(), '.ara', 'keyrings', 'keyring')
+    } 
+  },
   data: { root: resolve(os.homedir(), '.ara') },
 }
 
