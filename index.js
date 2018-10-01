@@ -41,7 +41,6 @@ function ARARuntimeConfiguration(conf, name) {
     // eslint-disable-next-line no-param-reassign
     name = name || kRuntimeConfigurationName
     // eslint-disable-next-line no-param-reassign
-    console.log("DEFAULTS:", defaults, conf, argv)
     conf = rc(name, extend(true, {}, defaults, conf), argv)
     extend(true, state, conf)
     return state
