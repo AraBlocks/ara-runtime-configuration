@@ -21,7 +21,7 @@
   "author": "Joseph Werle",
   "license": "LGPL-3.0",
   "dependencies": {
-    "ara-console": "github:arablocks/ara-console",
+    "ara-console": "github:arablocks/ara-console#semver:0.2.x",
     "debug": "^3.1.0",
     "extend": "^3.0.1",
     "json-select": "^2.2.0",
@@ -29,7 +29,7 @@
     "yargs": "^12.0.1"
   },
   "devDependencies": {
-    "eslint-config-ara": "github:arablocks/eslint-config-ara",
+    "eslint-config-ara": "github:arablocks/eslint-config-ara#semver:2.x.x",
     "ava": "^0.25.0",
     "eslint": "^5.3.0",
     "nyc": "^12.0.2"
