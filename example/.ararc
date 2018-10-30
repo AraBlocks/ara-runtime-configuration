@@ -1,3 +1,7 @@
+;; DATA
+[data]
+root = /usr/local/ara ;; point to somewhere else instead of ~/.ara
+
 ;; Ethereum
 [web3]
 provider = ws://127.0.0.1:9501
@@ -17,15 +21,15 @@ provider[]= ws://127.0.0.1:8546
 ;; Network Identity
 [network.identity]
 whoami = did:ara:93fabccb037059859523973b4c11bbc228794027825cd6bb732fece7d431ba33 ;; change this AraID
-root = /home/.ara/identities
+root = /usr/local/ara/identities
 
 [network.identity.resolver]
-keyring = /home/.ara/keyring.pub
+keyring = /usr/local/ara/keyring.pub
 network = resolver
 secret = secret
 
 [network.identity.archiver]
-keyring = /home/.ara/keyring.pub
+keyring = /usr/local/ara/keyring.pub
 network = archiver
 secret = secret
 
