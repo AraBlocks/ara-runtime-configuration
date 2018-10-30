@@ -12,7 +12,7 @@ Ara Runtime Configuration (Reads from the nearest `.ararc` file.)
 ## Installation
 
 ```sh
-$ npm install ara-runtime-configuration
+$ npm install arablocks/ara-runtime-configuration
 ```
 
 ## Usage
@@ -28,16 +28,28 @@ const conf = rc({
 })
 ```
 
+```INI
+[web3]
+provider = ws://127.0.0.1:8546
+
+[network.identity]
+keyring = /home/vipyne/.ara/keyring
+root = /home/vipyne/.ara/identities
+```
+
+#### Example
+
+Example [`.ararc`](/examples/.ararc)
+
 ## API
 
-### `const conf = rc([defaults])`
+### `const conf = rc({defaults})`
 
 Load runtime configuration defined in the nearest `.ararc` file on disk
 optionally specifying defaults.
 
-* `defaults` - Optional configuration defaults.
+* `defaults` - Optional configuration defaults object.
 
-## Command Line
 
 ### `araconf(1)`
 
@@ -45,7 +57,6 @@ optionally specifying defaults.
 configuration file. It uses
 [json-select](https://github.com/dominictarr/json-select) to support
 [JSONPath](http://goessner.net/articles/JsonPath/) queries.
-
 
 #### Usage
 
