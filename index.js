@@ -17,11 +17,7 @@ const ARA_DIR = resolve(os.homedir(), '.ara')
 const RUNTIME_CONFIGURATION_DEFAULTS = {
   network: {
     identity: {
-      root: resolve(ARA_DIR, 'identities'),
-      get keyring() {
-        debug('Deprecated: network.identity.keyring will be set differently.')
-        return resolve(ARA_DIR, 'keyrings', 'keyring')
-      }
+      root: resolve(ARA_DIR, 'identities')
     }
   },
   data: { root: ARA_DIR },
