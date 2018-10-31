@@ -39,7 +39,7 @@ root = /home/vipyne/.ara/identities
 
 #### Example
 
-Example [`.ararc`](/examples/.ararc)
+Example [`.ararc`](/example/.ararc)
 
 ## API
 
