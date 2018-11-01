@@ -14,7 +14,7 @@ const ARA_DIR = resolve(os.homedir(), '.ara')
  */
 
 const RUNTIME_CONFIGURATION_DEFAULTS = {
-  network: { },
+  network: { identity: { } },
   data: { root: ARA_DIR },
   web3: { }
 }
@@ -22,7 +22,7 @@ const RUNTIME_CONFIGURATION_DEFAULTS = {
 const NETWORK_CONFIGURATION_EXTENSION = base => ({
   network: {
     identity: {
-      root: resolve(base.data.root, 'identities')
+      root: base.network.identity.root || resolve(base.data.root, 'identities')
     }
   }
 })

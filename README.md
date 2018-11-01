@@ -43,13 +43,13 @@ Example [`.ararc`](/example/.ararc)
 
 ## API
 
-### `const conf = rc({defaults})`
+### `const conf = rc(conf, name)`
 
 Load runtime configuration defined in the nearest `.ararc` file on disk
 optionally specifying defaults.
 
-* `defaults` - Optional configuration defaults object.
-
+* `conf` - Optional default configuration object or function. If `conf` is a function, it will be passed the base runtime config object.
+* `name` - Optional name to override default `ara` rc name
 
 ### `araconf(1)`
 
