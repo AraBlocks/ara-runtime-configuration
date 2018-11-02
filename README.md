@@ -127,10 +127,10 @@ Releases follow [Semantic Versioning](https://semver.org/)
 
 ## See Also
 
-* [rc](https://github.com/dominictarr/rc)
-* [JSONPath](http://goessner.net/articles/JsonPath/)
-* [JSONStream](https://www.npmjs.com/package/JSONStream)
-* [json-select](https://github.com/dominictarr/json-select)
+- [rc](https://github.com/dominictarr/rc)
+- [JSONPath](http://goessner.net/articles/JsonPath/)
+- [JSONStream](https://www.npmjs.com/package/JSONStream)
+- [json-select](https://github.com/dominictarr/json-select)
 
 ## License
 
