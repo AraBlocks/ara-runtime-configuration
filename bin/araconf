@@ -48,7 +48,7 @@ try {
 
     process.stdout.write('\n')
   } else if (argv._.length) {
-    const stream = select(argv._.join(' '))
+    const stream = select(normalize(argv._.join(' ')))
     stream.on('error', onfatal)
     stream.on('data', ondata)
     stream.on('end', onend)
@@ -60,6 +60,10 @@ try {
   }
 } catch (err) {
   onfatal(err)
+}
+
+function normalize(query) {
+  return String(query || '').replace(/(\[)([a-z|A-Z|0-9]+)(\])/g, '.$2')
 }
 
 function stringify(object) {
