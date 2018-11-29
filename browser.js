@@ -9,7 +9,7 @@ module.exports = function rc(conf) {
 
   return extend(true, {
     network: {
-      identity: `${root.data.root}/identities}`
+      identity: `${root.data.root}/identities`
     }
   }, root)
 }
