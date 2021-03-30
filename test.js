@@ -1,13 +1,13 @@
 const test = require('ava')
-const rc = require('./')
+const rc = require('.')
 
 test.cb('simple', (t) => {
-  t.throws(() => rc(''), TypeError)
-  t.throws(() => rc(123), TypeError)
-  t.throws(() => rc(true), TypeError)
-  t.throws(() => rc({}, {}), TypeError)
-  t.throws(() => rc({}, 123), TypeError)
-  t.throws(() => rc({}, true), TypeError)
+  t.throws(() => rc(''), { instanceOf: TypeError })
+  t.throws(() => rc(123), { instanceOf: TypeError })
+  t.throws(() => rc(true), { instanceOf: TypeError })
+  t.throws(() => rc({}, {}), { instanceOf: TypeError })
+  t.throws(() => rc({}, 123), { instanceOf: TypeError })
+  t.throws(() => rc({}, true), { instanceOf: TypeError })
 
   t.true('function' === typeof rc)
   t.true('object' === typeof rc())

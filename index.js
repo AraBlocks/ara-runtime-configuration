@@ -19,7 +19,7 @@ const RUNTIME_CONFIGURATION_DEFAULTS = {
   web3: { }
 }
 
-const NETWORK_CONFIGURATION_EXTENSION = base => ({
+const NETWORK_CONFIGURATION_EXTENSION = (base) => ({
   network: {
     identity: {
       root: base.network.identity.root || resolve(base.data.root, 'identities')
@@ -50,10 +50,12 @@ function AraRuntimeConfiguration(conf, name) {
     // eslint-disable-next-line no-param-reassign
     name = name || RUNTIME_CONFIGURATION_NAME
 
-    const baseConf = extend(true, {}, rc(name, RUNTIME_CONFIGURATION_DEFAULTS, argv))
-    extend(true, baseConf, NETWORK_CONFIGURATION_EXTENSION(baseConf))
-    extend(true, baseConf, ('function' === typeof conf) ? conf(baseConf) : conf)
+    const defaults = { ...RUNTIME_CONFIGURATION_DEFAULTS }
+    const config = extend(true, {}, rc(name, defaults, argv))
 
-    return baseConf
+    extend(true, config, NETWORK_CONFIGURATION_EXTENSION(config))
+    extend(true, config, ('function' === typeof conf) ? conf(config) : conf)
+
+    return config
   }
 }
