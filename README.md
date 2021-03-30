@@ -1,9 +1,7 @@
 <img src="https://github.com/arablocks/ara-module-template/blob/master/ara.png" width="30" height="30" /> ara-runtime-configuration
 =========================
 
-[![Build Status](https://travis-ci.com/AraBlocks/ara-runtime-configuration.svg?token=6WjTyCg41y8MBmCzro5x&branch=master)](https://travis-ci.com/AraBlocks/ara-runtime-configuration)
-
-Ara Runtime Configuration (Reads from the nearest `.ararc` file.)
+> Ara Runtime Configuration (Reads from the nearest `.ararc` file.)
 
 ## Status
 
